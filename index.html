@@ -13,10 +13,16 @@
 </head>
 <body>
     <div class="w3-container">
-        <h1>Simple exam</h1>
-        <button id="exam_start" class="w3-button w3-round w3-blue">exam_start</button>
-        <button id="exam_take" class="w3-button w3-round w3-green">exam_take</button>
-        <button id="exam_end" class="w3-button w3-round w3-red">exam_end</button>
+        <div id="exam">
+            <h1>Simple exam</h1>
+            <button id="exam_start" class="w3-button w3-round w3-blue">exam_start</button>
+            <button id="exam_take" class="w3-button w3-round w3-green">exam_take</button>
+            <button id="exam_end" class="w3-button w3-round w3-red">exam_end</button>
+        </div>
+        <div id="thanks" style="display: none;">
+            <h2>Thanks for taking the exam</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime consectetur voluptatem, reiciendis doloremque esse culpa vitae minus harum veniam praesentium enim ipsam necessitatibus tenetur, sed sit saepe quisquam tempore explicabo.</p>
+        </div>
     </div>
     <script>
         const exam_start = document.getElementById("exam_start");
@@ -25,7 +31,11 @@
 
         exam_start.addEventListener("click", ()=> { window.top.postMessage(["exam_state_change", 'exam_start'], "https://getproctorio.com") });
         exam_take.addEventListener("click", ()=> { window.top.postMessage(["exam_state_change", 'exam_take'], "https://getproctorio.com") });
-        exam_end.addEventListener("click", ()=> { window.top.postMessage(["exam_state_change", 'exam_end'], "https://getproctorio.com") });
+        exam_end.addEventListener("click", ()=> {
+            window.top.postMessage(["exam_state_change", 'exam_end'], "https://getproctorio.com");
+            document.getElementById("thanks").style.display = "block";
+            document.getElementById("exam").style.display = "none";
+        });
     </script>
 </body>
 </html>
