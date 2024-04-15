@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>simple exam</title>
+    <style>
+        * {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="w3-container">
+        <h1>Simple exam</h1>
+        <button id="exam_start" class="w3-button w3-round w3-blue">exam-start</button>
+        <button id="exam_take" class="w3-button w3-round w3-blue">exam-take</button>
+        <button id="exam_end" class="w3-button w3-round w3-blue">exam-end</button>
+    </div>
+    <script>
+        const exam_start = document.getElementById("exam_start");
+        const exam_take = document.getElementById("exam_take");
+        const exam_end = document.getElementById("exam_end");
+
+        exam_start.addEventListener("click", ()=> { window.top.postMessage(["exam_state_change", 'exam_start'], "https://getproctorio.com") });
+        exam_take.addEventListener("click", ()=> { window.top.postMessage(["exam_state_change", 'exam_take'], "https://getproctorio.com") });
+        exam_end.addEventListener("click", ()=> { window.top.postMessage(["exam_state_change", 'exam_end'], "https://es.wikipedia.org") });
+    </script>
+</body>
+</html>
