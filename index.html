@@ -26,6 +26,16 @@
         </div>
     </div>
     <script>
+        const examCompleted = localStorage.getItem("examCompleted");
+        if (examCompleted) {
+            document.getElementById("thanks").style.display = "block";
+            document.getElementById("exam").style.display = "none";
+        }
+        const btn_clearLocalStorage = document.getElementById("clearLocalStorage");
+        btn_clearLocalStorage.addEventListener("click", ()=> { localStorage.clear(); });
+    
+
+
         const exam_start = document.getElementById("exam_start");
         const exam_take = document.getElementById("exam_take");
         const exam_end = document.getElementById("exam_end");
@@ -33,8 +43,8 @@
         exam_start.addEventListener("click", ()=> { window.top.postMessage(["exam_state_change", 'exam_start'], "https://getproctorio.com") });
         exam_take.addEventListener("click", ()=> { window.top.postMessage(["exam_state_change", 'exam_take'], "https://getproctorio.com") });
         exam_end.addEventListener("click", ()=> {
+            localStorage.setItem("examCompleted", true);
             window.top.postMessage(["exam_state_change", 'exam_end'], "https://getproctorio.com");
-            // I want to perform something after finishing the exam:
             alert("thanks for taking the exam");
         });
     </script>
