@@ -26,6 +26,7 @@
         </div>
     </div>
     <script>
+        /*
         const examCompleted = localStorage.getItem("examCompleted");
         if (examCompleted) {
             document.getElementById("thanks").style.display = "block";
@@ -33,6 +34,7 @@
         }
         const btn_clearLocalStorage = document.getElementById("clearLocalStorage");
         btn_clearLocalStorage.addEventListener("click", ()=> { localStorage.clear(); });
+        */
     
 
 
@@ -43,9 +45,9 @@
         exam_start.addEventListener("click", ()=> { window.top.postMessage(["exam_state_change", 'exam_start'], "https://getproctorio.com") });
         exam_take.addEventListener("click", ()=> { window.top.postMessage(["exam_state_change", 'exam_take'], "https://getproctorio.com") });
         exam_end.addEventListener("click", ()=> {
-            localStorage.setItem("examCompleted", true);
+            //localStorage.setItem("examCompleted", true);
             window.top.postMessage(["exam_state_change", 'exam_end'], "https://getproctorio.com");
-            alert("thanks for taking the exam");
+            window.location.replace("https://img.freepik.com/vector-gratis/gracias-letras_1262-6963.jpg");
         });
     </script>
 </body>
