@@ -44,7 +44,7 @@
         exam_end.addEventListener("click", ()=> {
             localStorage.setItem("examCompleted", true);
             window.top.postMessage(["exam_state_change", 'exam_end'], "https://getproctorio.com");
-            
+            alert("thanks for taking the exam");
         });
     </script>
 </body>
